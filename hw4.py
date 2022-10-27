@@ -23,8 +23,8 @@ class Advert():
             self.price = 0
 
     def __repr__(self):
-        return f'{self.title} | {self.price} ₽'
+        return f'\033[1;33;40m{self.title} | {self.price} ₽'
 
 
 aa = Advert(a)
-print(f'\033[1;33;40m{aa}')
+print(aa)
