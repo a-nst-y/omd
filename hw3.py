@@ -23,10 +23,7 @@ class CountVectorizer:
 
     def get_feature_names(self) -> list:
         """Returns a list of unique words for all texts in the list"""
-        if len(self.voc) == 0:
-            print('No text!')
-        else:
-            return self.voc
+        return self.voc
 
 
 if __name__ == '__main__':
