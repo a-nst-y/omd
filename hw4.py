@@ -40,13 +40,13 @@ class Advert(ColorizeMixin, CreateDict):
     @property
     def price(self):
         if self.price_ < 0:
-            raise ValueError("must be >= 0")
+            raise ValueError("price must be >= 0")
         return self.price_
 
     @price.setter
     def price(self, ad_price):
         if ad_price < 0:
-            raise ValueError("must be >= 0")
+            raise ValueError("price must be >= 0")
 
         self.price_ = ad_price
 
