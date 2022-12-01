@@ -27,8 +27,8 @@ class ColorizeMixin:
         return f"\033[1;{self.repr_color_code};40m {self.title} | {self.price}\n"
 
 
-class Advert(ColorizeMixin, CreateDict):
-    """Работает с выбранным объявлением 
+class Advert(CreateDict):
+    """Работает с выбранным объявлением
     и проверяет цену на корректность"""
     repr_color_code = 33
 
@@ -36,17 +36,17 @@ class Advert(ColorizeMixin, CreateDict):
         super().__init__(ad)
         if self.price is None:
             self.price = 0
+        if "title" not in ad:
+            raise ValueError("title is required")
 
     @property
     def price(self):
-        if self.price_ < 0:
-            raise ValueError("price must be >= 0")
         return self.price_
 
     @price.setter
     def price(self, ad_price):
         if ad_price < 0:
-            raise ValueError("price must be >= 0")
+            raise ValueError("must be >= 0")
 
         self.price_ = ad_price
 
@@ -56,4 +56,7 @@ if __name__ == '__main__':
         "сельское поселение Ельдигинское, поселок санатория Тишково, 25"}}"""
     corgi_ad = json.loads(a)
     corgi = Advert(corgi_ad)
-
+    print(corgi)
+    print(corgi.price)
+    print(corgi.location.address)
+    print(corgi.class_)
